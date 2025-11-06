@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import FileClaim from './FileClaim'; // 👈 You already have this
+import NotificationsPanel from './NotificationsPanel';
 
 function Dashboard() {
   // State for Claims
@@ -104,6 +105,8 @@ function Dashboard() {
   // --- Render ---
   return (
     <div className="dashboard-container">
+      {/* Notifications */}
+      <NotificationsPanel />
       
       {/* --- NEW: Policies Section --- */}
       <h2>My Policies</h2>

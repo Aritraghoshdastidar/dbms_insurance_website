@@ -7,8 +7,11 @@ function WorkflowMetricsDashboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
     axios
-      .get("http://localhost:3001/api/metrics/workflows")
+      .get("http://localhost:3001/api/metrics/workflows", {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
       .then((res) => setMetrics(res.data.metrics || []))
       .catch(() => setError("Could not load workflow metrics."));
   }, []);

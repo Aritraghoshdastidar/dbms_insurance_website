@@ -966,7 +966,7 @@ app.post('/api/policies/:policyId/mock-activate', checkAuth, async (req, res) =>
             return res.status(400).json({ error: `Policy status is "${policy.status}", activation not required or already active.` });
         }
         
-        // 2. Create a 'SUCCESS' record in initial_payment table if it exists; otherwise skip
+    // 2a. Create a 'SUCCESS' record in initial_payment table if it exists; otherwise skip
         const payment_id = 'MOCKPAY_' + Date.now();
         const transaction_id = 'MOCK_TXN_' + Date.now();
 
@@ -985,6 +985,31 @@ app.post('/api/policies/:policyId/mock-activate', checkAuth, async (req, res) =>
             }
         } catch (e) {
             console.warn('[Mock Activate] Error inserting into initial_payment (non-fatal):', e.code || e.message);
+        }
+
+        // 2b. Also insert a payment into the canonical 'payment' table if it exists to trigger DB notifications
+        try {
+            // Find the customer_policy_id for this customer-policy pair
+            const [cpRows] = await connection.execute(
+                `SELECT customer_policy_id FROM customer_policy WHERE customer_id = ? AND policy_id = ? LIMIT 1`,
+                [customer_id, policyId]
+            );
+            if (cpRows.length > 0) {
+                const customer_policy_id = cpRows[0].customer_policy_id;
+                const [tblPay] = await connection.execute(
+                    `SELECT 1 FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = 'payment'`
+                );
+                if (tblPay.length > 0) {
+                    const paymentId2 = payment_id + '_CANON';
+                    await connection.execute(
+                        `INSERT INTO payment (payment_id, customer_policy_id, status, payment_date, payment_mode)
+                         VALUES (?, ?, 'Success', NOW(), 'MOCK_PAYMENT')`,
+                        [paymentId2, customer_policy_id]
+                    );
+                }
+            }
+        } catch (e) {
+            console.warn('[Mock Activate] Skipping canonical payment insert (non-fatal):', e.code || e.message);
         }
 
         // 3. Update the policy status to ACTIVE
@@ -1681,20 +1706,21 @@ app.get('/api/alerts/highrisk', checkAuth, async (req, res) => {
 });
 
 // --- IWAS-F-030: Workflow Metrics Dashboard ---
-app.get('/api/metrics/workflows', async (req, res) => {
+app.get('/api/metrics/workflows', checkAuth, async (req, res) => {
   let connection;
   try {
     connection = await mysql.createConnection(dbConfig);
+    const customerId = req.user.customer_id; // Get logged-in customer ID from JWT
 
     const [rows] = await connection.execute(`
       SELECT w.workflow_id, w.name AS workflow_name,
              COUNT(c.claim_id) AS total_claims,
              AVG(TIMESTAMPDIFF(HOUR, c.claim_date, NOW())) AS avg_processing_time_hrs
       FROM workflows w
-      LEFT JOIN claim c ON w.workflow_id = c.workflow_id
+      LEFT JOIN claim c ON w.workflow_id = c.workflow_id AND c.customer_id = ?
       GROUP BY w.workflow_id, w.name
       ORDER BY total_claims DESC
-    `);
+    `, [customerId]);
 
     res.json({ metrics: rows });
   } catch (error) {
@@ -1746,4 +1772,61 @@ app.get('/api/reports/overdue-tasks', checkAuth, checkAdmin, async (req, res) =>
 // --- 10. Start the Server ---
 app.listen(port, () => {
     console.log(`✅ Backend API server running at http://localhost:${port}`);
+});
+
+
+// --- [NEW] Notifications API ---
+// Get notifications for the logged-in customer
+app.get('/api/notifications', checkAuth, async (req, res) => {
+    if (req.user.isAdmin) {
+        return res.status(400).json({ error: 'Notifications endpoint currently supports customers only.' });
+    }
+    let connection;
+    try {
+        const customer_id = req.user.customer_id;
+        const statusFilter = (req.query.status || '').toUpperCase(); // optional PENDING/READ
+        connection = await mysql.createConnection(dbConfig);
+        let sql = `SELECT notification_id, notification_date, status, message, type
+                   FROM reminder
+                   WHERE customer_id = ?`;
+        const params = [customer_id];
+        if (statusFilter === 'PENDING' || statusFilter === 'READ') {
+            sql += ' AND status = ?';
+            params.push(statusFilter);
+        }
+        sql += ' ORDER BY notification_date DESC';
+        const [rows] = await connection.execute(sql, params);
+        res.json({ notifications: rows });
+    } catch (error) {
+        console.error('Error fetching notifications:', error);
+        res.status(500).json({ error: 'Internal server error fetching notifications.' });
+    } finally {
+        if (connection) await connection.end();
+    }
+});
+
+// Mark a notification as READ
+app.put('/api/notifications/:notificationId/read', checkAuth, async (req, res) => {
+    if (req.user.isAdmin) {
+        return res.status(400).json({ error: 'Notifications endpoint currently supports customers only.' });
+    }
+    let connection;
+    try {
+        const notificationId = req.params.notificationId;
+        const customer_id = req.user.customer_id;
+        connection = await mysql.createConnection(dbConfig);
+        const [result] = await connection.execute(
+            `UPDATE reminder SET status = 'READ' WHERE notification_id = ? AND customer_id = ?`,
+            [notificationId, customer_id]
+        );
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: 'Notification not found.' });
+        }
+        res.json({ message: 'Notification marked as read.' });
+    } catch (error) {
+        console.error('Error updating notification:', error);
+        res.status(500).json({ error: 'Internal server error updating notification.' });
+    } finally {
+        if (connection) await connection.end();
+    }
 });
