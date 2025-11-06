@@ -1,0 +1,450 @@
+/* General App Styling */
+body {
+  background-color: #f0f2f5; /* Light gray background */
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+/* The main "card" for the generator */
+.App-header {
+  background-color: #ffffff; /* White card */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #282c34;
+  
+  /* Overriding create-react-app defaults for a cleaner look */
+  min-height: auto;
+  width: 500px;
+  max-width: 90%;
+  margin: 40px auto; /* Center the card on the page */
+  padding: 30px;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+/* Form Styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align labels to the left */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box; /* Fixes padding/width issues */
+}
+
+/* Button Styling */
+button {
+  background-color: #007bff; /* Primary blue */
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift */
+}
+
+/* Results Section Styling */
+.quote-results {
+  width: 100%;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background for the results */
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  text-align: left;
+}
+
+.quote-results h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.quote-results p {
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.quote-results h3 {
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+/* Error Message */
+.error {
+  color: #dc3545; /* Red for errors */
+  font-weight: 600;
+  margin-top: 20px;
+}
+/* --- Add this to the end of App.css --- */
+
+/* Navigation Bar */
+.main-nav {
+  background-color: #282c34;
+  padding: 15px 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-nav h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.logout-button {
+  background-color: #dc3545; /* Red */
+  width: auto; /* Override full width */
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+/* Page Content */
+.content {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+/* Login Form Container */
+.login-container {
+  width: 400px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-top: 0;
+}
+/* --- Add this to the end of App.css --- */
+
+/* Dashboard Page */
+.dashboard-container {
+  width: 90%;
+  max-width: 1000px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-top: -20px; /* Pulls it up a bit */
+}
+
+.dashboard-container h2 {
+  text-align: left;
+  margin-top: 0;
+}
+
+/* Claims Table */
+.claims-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.claims-table th,
+.claims-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.claims-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.claims-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Status Badges */
+.status {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.status-approved {
+  background-color: #28a745; /* Green */
+}
+.status-pending {
+  background-color: #ffc107; /* Yellow */
+  color: #333;
+}
+.status-declined {
+  background-color: #dc3545; /* Red */
+}
+/* --- Add this to the end of App.css --- */
+
+/* File Claim Form */
+.file-claim-form {
+  background-color: #f8f9fa;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.file-claim-form h3 {
+  margin-top: 0;
+  text-align: left;
+}
+
+.file-claim-form .form-group {
+  margin-bottom: 15px; /* Tighter spacing for this form */
+}
+
+/* Success Message */
+.success {
+  color: #28a745; /* Green */
+  font-weight: 600;
+  margin-bottom: 15px;
+  background-color: #eaf6ec;
+  padding: 10px;
+  border-radius: 5px;
+}
+/* --- Add this to the end of App.css --- */
+
+/* Action Buttons in Admin Table */
+.action-button {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  margin-right: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-button {
+  background-color: #17a2b8; /* Info Blue */
+  color: white;
+  border: none;
+}
+.view-button:hover {
+  background-color: #138496;
+}
+/* --- Add this to the end of App.css --- */
+.admin-toggle {
+  flex-direction: row; /* Make label and checkbox horizontal */
+  align-items: center;
+  margin-bottom: 20px;
+}
+.admin-toggle label {
+  margin-bottom: 0; /* Remove bottom margin for label */
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.admin-toggle input[type="checkbox"] {
+  width: auto; /* Override default input width */
+  margin-right: 8px;
+}
+/* --- Add this to the end of App.css --- */
+
+/* Admin Action Buttons */
+.approve-button {
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+}
+.approve-button:hover {
+  background-color: #218838;
+}
+
+.decline-button {
+  background-color: #dc3545; /* Red */
+  color: white;
+  border: none;
+}
+.decline-button:hover {
+  background-color: #c82333;
+}
+
+/* Inline status/error messages within table row */
+.loading-inline {
+  font-style: italic;
+  color: #555;
+  font-size: 0.9em;
+}
+.error-inline {
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+/* --- Add this to the end of App.css --- */
+.form-footer-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+.form-footer-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.form-footer-link a:hover {
+  text-decoration: underline;
+}
+/* --- Add this to the end of App.css --- */
+
+/* Workflow List Table */
+.workflows-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.workflows-table th,
+.workflows-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+.workflows-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+/* Workflow Editor */
+.workflow-editor-container h3 {
+  margin-top: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.workflow-steps-list {
+  list-style: none;
+  padding-left: 0;
+}
+.workflow-steps-list li {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+.workflow-steps-list pre {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  margin-top: 10px;
+  white-space: pre-wrap; /* Wrap long JSON */
+  word-break: break-all;
+}
+
+.add-step-form {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+.add-step-form h4 {
+  margin-top: 0;
+}
+
+/* Make step form fields appear inline */
+.inline-group {
+  display: inline-block; /* Or use flexbox */
+  width: calc(33% - 10px); /* Adjust width as needed */
+  margin-right: 10px;
+  vertical-align: top;
+}
+.inline-group label {
+    display: block; /* Ensure label is above input */
+}
+.inline-group input, .inline-group select {
+    width: 100%; /* Make input fill container */
+}
+.add-step-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: monospace; /* Good for JSON */
+}
+
+/* Secondary button style */
+.button-secondary {
+    background-color: #6c757d; /* Gray */
+    color: white;
+}
+.button-secondary:hover {
+    background-color: #5a6268;
+}
+/* --- Add this to the end of App.css --- */
+
+/* Workflow Step Edit/Delete Buttons */
+.edit-button {
+  background-color: #ffc107; /* Yellow */
+  color: #333;
+}
+.edit-button:hover {
+  background-color: #e0a800;
+}
+
+.workflow-steps-list li div { /* Container for step title and buttons */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.workflow-steps-list li div button { /* Make buttons smaller */
+    padding: 4px 8px;
+    font-size: 0.75rem;
+}

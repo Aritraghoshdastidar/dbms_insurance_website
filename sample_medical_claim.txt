@@ -1,0 +1,30 @@
+INSURANCE CLAIM SUBMISSION FORM
+================================
+
+POLICYHOLDER INFORMATION:
+Name: Priya Sharma
+Policy Number: POL-987654
+Contact: +91-9876543210
+
+CLAIM INFORMATION:
+Claim ID: CLM2024789
+Date of Incident: October 28, 2025
+Type of Claim: Medical Emergency
+
+FINANCIAL DETAILS:
+Amount: ₹225,500
+Payment Method: Direct Transfer
+Status: Pending Review
+
+INCIDENT DESCRIPTION:
+Emergency hospitalization due to sudden cardiac arrest.
+Treatment included ICU admission, surgery, and post-operative care.
+
+SUPPORTING DOCUMENTS:
+- Hospital Bills: ₹195,000
+- Doctor Consultation: ₹15,500
+- Medication: ₹15,000
+
+Total Claimed Amount: ₹225,500
+
+Declaration: I hereby declare that the information provided above is true and correct.

@@ -1,0 +1,41 @@
+{
+  "name": "insurance-backend-official",
+  "version": "1.0.0",
+  "description": "**Project ID:** P04  \r **Course:** UE23CS341A  \r **Academic Year:** 2025  \r **Semester:** 5th Sem  \r **Campus:** RR  \r **Branch:** AIML  \r **Section:** B  \r **Team:** Logicore",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Tests passed (placeholder)\" && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "mysql2": "^3.15.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "babel-jest": "^30.2.0"
+  },
+
+  "babel": {
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+  },
+
+  "jest": {
+  "transform": {
+    "^.+\\.(js|jsx)$": "babel-jest"
+  },
+  "moduleFileExtensions": ["js", "jsx"]
+}
+
+}

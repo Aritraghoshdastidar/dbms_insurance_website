@@ -1,0 +1,21 @@
+Insurance Claim Document
+========================
+
+Claim ID: CLM2024001
+Policy ID: POL1002
+Policyholder: John Smith
+Date: November 1, 2025
+Type: Vehicle Accident
+
+Claim Details:
+--------------
+Amount: ₹5,500
+Description: Vehicle damage due to rear-end collision at intersection
+Location: Main Street, Downtown
+
+Supporting Documents:
+- Police Report #PR12345
+- Medical Bills
+- Repair Estimates
+
+This claim requires immediate processing.

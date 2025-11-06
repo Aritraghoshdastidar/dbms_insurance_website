@@ -1,0 +1,917 @@
+/* Enhanced Professional & Attractive Styling */
+
+/* Modern Color Palette */
+:root {
+  --primary-blue: #2563eb;
+  --primary-dark: #1e40af;
+  --secondary-purple: #7c3aed;
+  --accent-cyan: #06b6d4;
+  --success-green: #10b981;
+  --warning-orange: #f59e0b;
+  --danger-red: #ef4444;
+  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Beautiful Background */
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  color: #1f2937 !important;
+  min-height: 100vh;
+}
+
+/* Smooth page transitions */
+.content > div {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+/* Stunning Navigation */
+.main-nav {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 18px 40px !important;
+  backdrop-filter: blur(10px);
+}
+
+.main-nav h1 {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 1.8rem !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #ffffff !important;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Beautiful Cards */
+.dashboard-container,
+.login-container,
+.workflow-editor-container {
+  background: #ffffff !important;
+  color: #1f2937 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.dashboard-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15) !important;
+}
+
+.login-container {
+  max-width: 450px;
+  padding: 40px !important;
+}
+
+.login-container h2 {
+  color: #667eea !important;
+  font-size: 2rem !important;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.dashboard-container h2,
+.dashboard-container h3 {
+  color: #667eea !important;
+  font-weight: 700;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 12px;
+  margin-bottom: 25px;
+}
+
+/* Modern Form Styling */
+.form-group label {
+  color: #374151 !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  transition: all 0.3s ease;
+  border: 2px solid #e5e7eb !important;
+  background: #f9fafb !important;
+  color: #1f2937 !important;
+  border-radius: 12px !important;
+  padding: 14px 18px !important;
+  font-size: 1rem;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1) !important;
+  background: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Stunning Buttons */
+button:not(.action-button) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 14px 32px !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  cursor: pointer;
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Premium Tables */
+.claims-table,
+.workflows-table {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.claims-table th,
+.workflows-table th {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1.2px;
+  padding: 18px 16px !important;
+  border: none !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.claims-table tbody tr,
+.workflows-table tbody tr {
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.claims-table tbody tr:hover,
+.workflows-table tbody tr:hover {
+  background: linear-gradient(90deg, #f8f9ff 0%, #f0f1ff 100%);
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+.claims-table td,
+.workflows-table td {
+  color: #374151 !important;
+  padding: 14px 12px !important;
+  font-size: 0.95rem;
+}
+
+/* Beautiful Status Badges */
+.status {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.status:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.status-inactive-awaiting-payment {
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  color: #fff;
+}
+
+.status-active,
+.status-approved {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #fff;
+}
+
+.status-pending-initial-approval,
+.status-pending-final-approval,
+.status-pending {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #78350f;
+}
+
+.status-declined,
+.status-expired {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #fff;
+}
+
+/* Action Buttons - Colorful & Professional */
+.action-button {
+  transition: all 0.3s ease;
+  border: none;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 16px !important;
+  font-size: 0.85rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.approve-button {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: white !important;
+}
+
+.approve-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.decline-button {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: white !important;
+}
+
+.decline-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+.view-button {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%) !important;
+  color: white !important;
+}
+
+.view-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+}
+
+.edit-button {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+  color: white !important;
+}
+
+.edit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+.logout-button {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: white !important;
+  box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
+}
+
+.logout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.5);
+}
+
+/* Beautiful Success/Error Messages */
+.success {
+  animation: slideInLeft 0.4s ease-out;
+  border-left: 4px solid #10b981;
+  background: linear-gradient(90deg, #d1fae5 0%, #a7f3d0 100%) !important;
+  color: #065f46 !important;
+  padding: 16px 20px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+  font-weight: 600;
+}
+
+.error {
+  animation: shake 0.5s ease-in-out;
+  border-left: 4px solid #ef4444;
+  background: linear-gradient(90deg, #fee2e2 0%, #fecaca 100%) !important;
+  color: #991b1b !important;
+  padding: 16px 20px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+  font-weight: 600;
+}
+
+@keyframes slideInLeft {
+  from { 
+    opacity: 0; 
+    transform: translateX(-30px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* Loading States */
+.loading-inline {
+  background: linear-gradient(90deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1e40af;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.error-inline {
+  background: linear-gradient(90deg, #fee2e2 0%, #fecaca 100%);
+  color: #991b1b;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* File Claim Form Enhancement */
+.file-claim-form {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+  border: 2px solid #bae6fd !important;
+  border-radius: 16px !important;
+  padding: 30px !important;
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.1);
+}
+
+.file-claim-form h3 {
+  color: #0891b2 !important;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    width: 95%;
+    padding: 20px !important;
+    border-radius: 16px !important;
+  }
+  
+  .main-nav {
+    flex-direction: column;
+    padding: 15px 20px !important;
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  
+  .nav-links a {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .claims-table,
+  .workflows-table {
+    font-size: 0.8rem;
+  }
+  
+  .action-button {
+    padding: 6px 12px !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .main-nav,
+  button,
+  .action-button {
+    display: none;
+  }
+  
+  .dashboard-container {
+    box-shadow: none;
+    width: 100%;
+  }
+}
+
+/* Accessibility */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #6941a1 100%);
+}
+
+/* Navigation enhancements */
+.main-nav {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(135deg, #282c34 0%, #1a1d24 100%);
+}
+
+.main-nav h1 {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+/* Enhanced card containers */
+.dashboard-container,
+.login-container,
+.workflow-editor-container {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.dashboard-container:hover {
+  box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+}
+
+/* Better button styling */
+button:not(.logout-button):not(.action-button) {
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,123,255,0.3);
+}
+
+button:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0,123,255,0.2);
+}
+
+/* Table improvements */
+.claims-table,
+.workflows-table {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.claims-table th,
+.workflows-table th {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: #495057;
+}
+
+.claims-table tbody tr,
+.workflows-table tbody tr {
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.claims-table tbody tr:hover,
+.workflows-table tbody tr:hover {
+  background-color: #f8f9ff;
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Status badge enhancements */
+.status {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.status:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.status-inactive-awaiting-payment {
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  color: #fff;
+}
+
+.status-active {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: #fff;
+}
+
+.status-pending-initial-approval,
+.status-pending-final-approval,
+.status-pending {
+  background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+  color: #333;
+}
+
+.status-declined,
+.status-expired {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: #fff;
+}
+
+.status-approved {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: #fff;
+}
+
+/* Loading states */
+.loading-inline,
+.error-inline {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.loading-inline {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.error-inline {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+/* Form improvements */
+.form-group input,
+.form-group textarea,
+.form-group select {
+  transition: all 0.3s ease;
+  border: 2px solid #e0e0e0;
+  background-color: #ffffff !important;
+  color: #333 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #007bff !important;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.15) !important;
+  background-color: #ffffff !important;
+}
+
+.form-group label {
+  color: #495057 !important;
+  font-weight: 600;
+}
+
+/* Fix placeholder text visibility */
+input::placeholder,
+textarea::placeholder {
+  color: #999 !important;
+  opacity: 1;
+}
+
+/* Success/Error message styling */
+.success {
+  animation: slideIn 0.3s ease-out;
+  border-left: 4px solid #28a745;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+}
+
+.error {
+  animation: shake 0.5s ease-in-out;
+  border-left: 4px solid #dc3545;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
+}
+
+/* Action button improvements */
+.action-button {
+  transition: all 0.3s ease;
+  border: none;
+  font-weight: 600;
+}
+
+.approve-button {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  box-shadow: 0 2px 6px rgba(40, 167, 69, 0.3);
+}
+
+.approve-button:hover {
+  background: linear-gradient(135deg, #218838 0%, #1aa179 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+.decline-button {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  box-shadow: 0 2px 6px rgba(220, 53, 69, 0.3);
+}
+
+.decline-button:hover {
+  background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+.view-button {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+  box-shadow: 0 2px 6px rgba(23, 162, 184, 0.3);
+}
+
+.view-button:hover {
+  background: linear-gradient(135deg, #138496 0%, #117a8b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(23, 162, 184, 0.4);
+}
+
+.edit-button {
+  background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+  box-shadow: 0 2px 6px rgba(255, 193, 7, 0.3);
+}
+
+.edit-button:hover {
+  background: linear-gradient(135deg, #e0a800 0%, #d39e00 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+}
+
+.logout-button {
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  box-shadow: 0 2px 6px rgba(220, 53, 69, 0.3);
+}
+
+.logout-button:hover {
+  background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .dashboard-container {
+    width: 95%;
+    padding: 20px;
+  }
+  
+  .main-nav {
+    flex-direction: column;
+    padding: 10px 15px;
+  }
+  
+  .main-nav > div {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  
+  .claims-table,
+  .workflows-table,
+  .data-table {
+    font-size: 0.85rem;
+  }
+  
+  .action-button {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .main-nav,
+  button,
+  .action-button {
+    display: none;
+  }
+  
+  .dashboard-container {
+    box-shadow: none;
+    width: 100%;
+  }
+}
+
+/* Accessibility improvements */
+button:focus,
+a:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Ensure proper text contrast */
+body {
+  color: #333 !important;
+}
+
+.dashboard-container,
+.login-container,
+.workflow-editor-container {
+  background-color: #ffffff !important;
+  color: #333 !important;
+}
+
+.login-container h2,
+.dashboard-container h2,
+.dashboard-container h3 {
+  color: #282c34 !important;
+}
+
+.form-group label {
+  color: #495057 !important;
+}
+
+input,
+textarea,
+select {
+  background-color: #ffffff !important;
+  color: #333 !important;
+  border: 2px solid #e0e0e0;
+}
+
+.claims-table,
+.workflows-table {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.claims-table th,
+.workflows-table th {
+  color: #495057 !important;
+}
+
+.claims-table td,
+.workflows-table td {
+  color: #333 !important;
+}
+
+/* Make sure My Policies and My Claims section headers are visible on dark backgrounds */
+.dashboard-container h2,
+.dashboard-container h3 {
+  color: #667eea !important;
+  font-weight: 700;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 12px;
+  margin-bottom: 25px;
+}
+
+/* Policy and Claims table - ensure text is readable on any background */
+.policies-table th,
+.policies-table td,
+.claims-table th,
+.claims-table td,
+.workflows-table th,
+.workflows-table td {
+  color: #1f2937 !important;
+  font-weight: 500;
+}
+
+/* Table headers should be dark blue with WHITE text for contrast */
+.policies-table th,
+.claims-table th,
+.workflows-table th {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1.2px;
+  padding: 18px 16px !important;
+  border: none !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* For any data tables in dashboard with dark backgrounds */
+.data-table th {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1.2px;
+  padding: 18px 16px !important;
+  border: none !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.data-table td {
+  color: #1f2937 !important;
+  font-weight: 500;
+  background-color: #ffffff !important;
+}
+
+
