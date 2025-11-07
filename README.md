@@ -1,160 +1,110 @@
 # Insurance workflow automation software
 
-**Project ID:** P04  
-**Course:** UE23CS341A  
-**Academic Year:** 2025  
-**Semester:** 5th Sem  
-**Campus:** RR  
-**Branch:** AIML  
-**Section:** B  
-**Team:** Logicore
+# Insurance Workflow Automation — Local Development README
 
-## 📋 Project Description
+This README explains how to run the backend API and frontend locally, set up the database, and exercise the notification features. It is intentionally concise and focused on running the project — no course or team information is included.
 
-This app has insurance companies and users who want to get insurance as users. This should be able to 2/4 wheeler and personal healthcare ploicies.
-
-This repository contains the source code and documentation for the Insurance workflow automation software project, developed as part of the UE23CS341A course at PES University.
-
-## 🧑‍💻 Development Team (Logicore)
-
-- [@Aritraghoshdastidar](https://github.com/Aritraghoshdastidar) - Scrum Master
-- [@bshrikrishna](https://github.com/bshrikrishna) - Developer Team
-- [@archi829](https://github.com/archi829) - Developer Team
-- [@pes1ug23am077-aiml](https://github.com/pes1ug23am077-aiml) - Developer Team
-
-## 👨‍🏫 Teaching Assistant
-
-- [@Amrutha-PES](https://github.com/Amrutha-PES)
-- [@VenomBlood1207](https://github.com/VenomBlood1207)
-
-## 👨‍⚖️ Faculty Supervisor
-
-- [@Arpitha035](https://github.com/Arpitha035)
-
-
-## 🚀 Getting Started (Local-only)
-
-This project is configured to run locally without any Git metadata or remote connections.
-
-### Prerequisites
+## Prerequisites
 - Node.js 18+ and npm
 - MySQL 8+
+- A terminal (PowerShell on Windows)
 
-### 1) Backend setup
+## Quick overview
+- Backend: `server.js` (Express, uses `mysql2/promise`)
+- Frontend: `insurance-frontend/` (React)
+- Database scripts: `database_scripts/` (contains DDL, triggers, and seed data)
+- Notifications are stored in the `reminder` table (see `02_create_tables.sql`) and created by triggers in `03_create_triggers.sql`.
 
-#### First: Configure MySQL Connection
+## 1) Database setup
 
-**CRITICAL:** You must set your MySQL password before the backend will work!
+1. Start your MySQL server and note the root password.
 
-1. **Find your MySQL root password** (what you use to login to MySQL Workbench or command line)
-   
-2. **Update .env file**:
-   - Open `.env` in the project root
-   - Find the line: `DB_PASSWORD=YOUR_MYSQL_ROOT_PASSWORD_HERE`
-   - Replace `YOUR_MYSQL_ROOT_PASSWORD_HERE` with your actual password
-   - Save the file
+2. Create the database and schema. From PowerShell, either import the single combined SQL file or run the scripts in order.
 
-3. **Test your connection** (optional):
-   - Run `test-mysql.bat` to verify MySQL credentials work
-   - Or manually test: `mysql -u root -p` (enter your password when prompted)
-
-#### Common MySQL Passwords by Installation:
-- **XAMPP**: Usually empty `""` or `"root"`
-- **WAMP**: Check WAMP control panel
-- **Manual Install**: Whatever you set during installation
-- **Can't remember?** See `MYSQL_SETUP.md` for password reset instructions
-
-#### Then: Setup Database and Start Server
-
-1. Create the MySQL database and schema:
-   - Open MySQL command line: `mysql -u root -p` (enter your password)
-   - Run: `source database_scripts/dbms_database_fixed.sql;`
-   - Or import using MySQL Workbench: File → Run SQL Script → select `dbms_database_fixed.sql`
-   - This creates database `dbms_database` with tables, triggers, and sample data
-
-2. Install backend dependencies and start the API:
-
-   Windows PowerShell (from the project root):
-
-   ```powershell
-   npm install
-   npm start
-   ```
-
-   **Expected output:**
-   ```
-   ✅ Backend API server running at http://localhost:3001
-   🔗 Connected to MySQL database 'dbms_database'.
-   ```
-
-   **If you see a warning instead:**
-   ```
-   ⚠️ Could not connect to MySQL: Access denied...
-   ```
-   → Your DB_PASSWORD in .env is incorrect. Update it and restart.
-
-   The API will run at http://localhost:3001. Health check: http://localhost:3001/api/health
-
-### 2) Frontend setup
-1. Install dependencies and start the React app:
-
-   ```powershell
-   cd insurance-frontend
-   npm install
-   npm start
-   ```
-
-   The UI will run at http://localhost:3000
-
-### Default local accounts
-- Admin example: Use the admin `ADM002` with the seeded email `j.adjuster@insurance.com` and the password hash already present in the database (set your own if needed).
-- Customer example: Register a new user via the UI or use seeded users.
-
-## 📁 Project Structure (key parts)
-
-```
-project/
-├── server.js                    # Express API server
-├── package.json                 # Backend dependencies and scripts
-├── database_scripts/
-│   └── dbms_database_fixed.sql  # MySQL schema + seed + triggers (targets dbms_database)
-├── insurance-frontend/          # React app
-│   ├── package.json
-│   └── src/
-│       ├── App.js               # Routes + Layout
-│       └── components/          # UI pages (Dashboards, Workflows, Reports)
-└── uploads/                     # Temp uploads for document processor
+Option A — import the combined SQL file (recommended if present):
+```powershell
+# PowerShell: pipe the SQL file contents to mysql.exe (avoids < redirection issues)
+Get-Content -Raw "${PWD}\database_scripts\dbms_database_fixed.sql" | "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
 ```
 
-## 🛠️ Notes
-- **MySQL Setup Critical**: The `.env` file MUST have your correct MySQL password. See `MYSQL_SETUP.md` if you need help.
-- Backend DB config is read from `.env` (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME=dbms_database). 
-- The workflow engine and admin/customer APIs assume the schema in `dbms_database_fixed.sql`.
-- Extra pages (Documents, Alerts, Metrics, Overdue) are accessible from the top navbar after logging in.
-
-## 📚 Documentation
-
-- [API Documentation](docs/api.md)
-- [User Guide](docs/user-guide.md)
-- [Developer Guide](docs/developer-guide.md)
-
-## 🧪 Testing
-
-```bash
-# Run tests
-npm test
-
-# Run tests with coverage
-npm run test:coverage
+Option B — run scripts individually (in order) using mysql client:
+```powershell
+"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p < "C:\PESU\dbms\project\database_scripts\01_create_database.sql"
+# Repeat for 02_create_tables.sql, 03_create_triggers.sql, etc., or open mysql and run SOURCE commands
 ```
 
-## 📄 License
+Notes:
+- The table that holds notifications is named `reminder` (not `reminder_notification`) — see `database_scripts/02_create_tables.sql`.
+- If you have trouble with the mysql.exe path, install MySQL client or add it to PATH or run via MySQL Workbench.
 
-This project is developed for educational purposes as part of the PES University UE23CS341A curriculum.
+## 2) Backend (API) setup
 
----
+1. Create a `.env` file in project root if not present (sample variables used by `server.js`):
+```
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=YOUR_MYSQL_ROOT_PASSWORD
+DB_NAME=dbms_database
+JWT_SECRET=some_change_this_secret
+PORT=3001
+```
 
-**Course:** UE23CS341A  
-**Institution:** PES University  
-**Academic Year:** 2025  
-**Semester:** 5th Sem
+2. Install and start the backend (from project root):
+```powershell
+npm install
+npm start
+```
+
+3. Health check: open http://localhost:3001/api/health (server logs should show a start message)
+
+## 3) Frontend setup
+
+1. Start the React app:
+```powershell
+cd insurance-frontend
+npm install
+npm start
+```
+
+2. App will typically run at http://localhost:3000
+
+## 4) How notifications work (summary)
+- Storage: `reminder` table (see `database_scripts/02_create_tables.sql`)
+- Generation: DB triggers in `database_scripts/03_create_triggers.sql` insert into `reminder` on events such as claim updates, payment success, policy insertion, and renewal reminders.
+- Backend: two customer endpoints are provided in `server.js`:
+  - `GET /api/notifications` — returns the logged-in customer's reminders from `reminder`
+  - `PUT /api/notifications/:notificationId/read` — marks a reminder as read
+- Frontend: `insurance-frontend/src/components/NotificationsPanel.js` polls `GET /api/notifications` (every 15s) and marks reminders read via the PUT endpoint.
+
+Authentication: the server uses JWT tokens. The login endpoint issues a token with a payload that includes `customer_id`. The frontend stores the token in `localStorage` and sends it in the `Authorization: Bearer <token>` header for protected API calls.
+
+## 5) Common troubleshooting
+- MySQL connection errors: verify `.env` DB_PASSWORD and the mysql client path. Use `Get-Content -Raw` piping if PowerShell rejects `< file.sql` redirection.
+- If renewal reminders have `customer_id = NULL`, run the backfill script `database_scripts/10_fix_renewal_customer_link.sql` (it backfills and updates the trigger to attach renewal reminders when customer links are created).
+
+## 6) Useful commands
+- Run a quick query to inspect recent reminders (PowerShell):
+```powershell
+& "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p -e `
+"SELECT notification_id, notification_date, status, type, customer_id, message FROM dbms_database.reminder ORDER BY notification_date DESC LIMIT 20;"
+```
+
+- Mark notification read (via API using PowerShell):
+```powershell
+$token = "<paste-jwt-here>"
+Invoke-RestMethod -Uri "http://localhost:3001/api/notifications/NOTIF_ID/read" -Method Put -Headers @{ Authorization = "Bearer $token" }
+```
+
+## 7) Project layout (short)
+- `server.js` — Express API and middleware (auth, admin checks, notifications endpoints)
+- `database_scripts/` — SQL DDL, triggers, seed data, and fix scripts
+- `insurance-frontend/` — React app and components (NotificationsPanel, Dashboard, etc.)
+
+## 8) Tests (if any)
+- Run `npm test` from project root (backend) if tests are present.
+
+If you want, I can also:
+- Remove or rename any leftover docs references to course/team data elsewhere in the repo
+- Add a short developer section explaining how to run only a subset of SQL scripts
+
+That's it — this README focuses on running and testing the application locally. If you'd like a trimmed version or extra developer notes, tell me which sections to expand or remove.
