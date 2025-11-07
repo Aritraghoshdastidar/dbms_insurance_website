@@ -103,8 +103,4 @@ Invoke-RestMethod -Uri "http://localhost:3001/api/notifications/NOTIF_ID/read" -
 ## 8) Tests (if any)
 - Run `npm test` from project root (backend) if tests are present.
 
-If you want, I can also:
-- Remove or rename any leftover docs references to course/team data elsewhere in the repo
-- Add a short developer section explaining how to run only a subset of SQL scripts
 
-That's it — this README focuses on running and testing the application locally. If you'd like a trimmed version or extra developer notes, tell me which sections to expand or remove.
